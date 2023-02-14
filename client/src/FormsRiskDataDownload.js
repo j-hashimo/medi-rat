@@ -1,0 +1,66 @@
+export default [
+  {
+    link: '/file/CADDRA-ASSESSMENT-Form.pdf',
+    imageURL: '/images/CADDRA.png',
+    imageAlt: 'CADDRA Logo',
+    title: 'CADDRA Assessment Form',
+    description: '',
+  },
+  {
+    link: '/file/GAD7.pdf',
+    imageURL: '/images/anxiety.jpg',
+    imageAlt: 'Anxiety',
+    title: 'Anxiety scale - GAD-7 Scale',
+    description: '',
+  },
+  {
+    link: '/file/CHADS.pdf',
+    imageURL: '/images/arrhythmia.png',
+    imageAlt: 'Atrial Fibrilation',
+    title: 'Atrial Fibrilation Risk Assessment', 
+    description: '',
+  },
+  {
+    link: '/file/FolsteinMMSE.pdf',
+    imageURL: '/images/dementia.png',
+    imageAlt: 'Dementia',
+    title: 'Dementia Assessment',
+    description: 'Folstein Mini-Mental Status Exam.',
+  },
+  {
+    link: '/file/MOCA-Test-English.pdf',
+    imageURL: '/images/Moca-Badge.png',
+    imageAlt: 'MoCa Badge',
+    title: 'Dementia Assessment',
+    description: 'Montreal Cognitive Assessment (MoCA).',
+  },
+  {
+    link: '/file/GDS.pdf',
+    imageURL: '/images/GDS.png',
+    imageAlt: 'GDS Initials',
+    title: 'Dementia Assessment',
+    description: 'Global Deterioration Scale.',
+  },
+  {
+    link: '/file/PHQ9.pdf',
+    imageURL: '/images/Depression.png',
+    imageAlt: 'Depression',
+    title: 'Dementia Assessment',
+    description: 'PHQ-9 Scale.',
+  },
+  {
+    link: '/file/pc-ptsd-screen.pdf',
+    imageURL: '/images/PTSD.png',
+    imageAlt: 'PTSD',
+    title: 'Dementia - PTSD',
+    description: '',
+  },
+  {
+    link: '/file/scat3.pdf',
+    imageURL: '/images/ConcussionAdult.png',
+    imageAlt: 'Concussion - Adult',
+    title: 'Concussion: SCAT3 Adult',
+    description: '',
+  },
+  
+]

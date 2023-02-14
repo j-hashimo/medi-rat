@@ -50,10 +50,10 @@ const SavedCards = () => {
                 {card.description}
               </p>
               <button
-                className="mt-2 bg-red-700 text-white px-5 py-3 inline-block rounded-lg shadow-lg uppercase tracking-wider font-semibold text-sm sm:text-base hover:bg-red-600 hover:-translate-y-0.5 focus:outline-none focus:ring focus:ring-offset-2 focus:ring-red-700 focus:ring-opacity-50 active:bg-red-800 transform transition"
+                className="mt-2 bg-red-700 text-white px-5 py-3 inline-block rounded-lg shadow-lg uppercase tracking-wider font-semibold text-sm sm:text-base hover:bg-red-600 hover:-translate-y-0.5 focus:outline-none focus:ring focus:ring-offset-2 focus:ring-red-700 focus:ring-opacity-50 active:bg-red-800 transform transition material-symbols-outlined"
                 onClick={() => deleteCard(card)}
               >
-                Delete
+                delete
               </button>
             </div>
           </div>

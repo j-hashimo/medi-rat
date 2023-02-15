@@ -6,6 +6,8 @@ import Charts from "./Charts";
 import HowTo from "./HowTo";
 import Home from "./Home";
 import SavedCards from "./pages/savedCards";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import { Routes, Route, Link } from "react-router-dom";
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route exact path="/charts" element={<Charts />} />
         <Route exact path="/howto" element={<HowTo />} />
         <Route exact path="/savedcards" element={<SavedCards />} />
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/signup" element={<Signup />} />
       </Routes>
     </div>
   );

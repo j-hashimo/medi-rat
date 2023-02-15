@@ -17,7 +17,7 @@ export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, { user: null }); //user is null because we don't have a user logged in at the beginning usually
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = JSON.parse(localStorage.getItem("user")); //this parses the json object (in the local storage) into a javascript object (so we can use it)
     if (user) {
       dispatch({ type: "LOGIN", payload: user });
     } //this allows us to keep being logged in even after refreshing the page

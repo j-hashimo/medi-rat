@@ -2,7 +2,8 @@ const UserTools = require("../models/userToolModel");
 const mongoose = require("mongoose");
 //get all user tools
 const getUserTools = async (req, res) => {
-  const userTools = await UserTools.find({}).sort({ createdAt: -1 }); //This is a mongoose method that finds all the workouts in the database. When the object is empty, it will find all the workouts (if you added a property for the object, it will only find workouts that match that property). Also use the sort method to sort the workouts by the createdAt property in descending order (newest to oldest)
+  const user_id = req.user._id; //this is the user id that is returned from the requireAuth middleware function. It is the user that is logged in
+  const userTools = await UserTools.find({ user_id }).sort({ createdAt: -1 }); //This is a mongoose method that finds all the workouts in the database. When the object is empty, it will find all the workouts (if you added a property for the object, it will only find workouts that match that property). Also use the sort method to sort the workouts by the createdAt property in descending order (newest to oldest)
   //Also, by inserting user_id into the find method, we are only getting the workouts that belong to the user that is logged in
 
   res.status(200).json(userTools); //This will send the workouts to the client
@@ -29,12 +30,14 @@ const createUserTool = async (req, res) => {
 
   //add doc to db
   try {
+    const user_id = req.user._id; //this is the user id that is returned from the requireAuth middleware function. It is the user that is logged in
     const tool = await UserTools.create({
       link,
       title,
       description,
       imageURL,
       imageAlt,
+      user_id,
     });
     res.status(200).json(tool);
   } catch (error) {

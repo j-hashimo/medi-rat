@@ -8,8 +8,12 @@ import Home from "./Home";
 import SavedCards from "./pages/savedCards";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, BrowserRouter, Navigate } from "react-router-dom";
+import { useAuthContext } from "./hooks/useAuthContext";
+
 function App() {
+  const { user } = useAuthContext();
+
   return (
     <div className="App">
       <Nav />
@@ -19,9 +23,21 @@ function App() {
         <Route exact path="/formsrisk" element={<FormsRisk />} />
         <Route exact path="/charts" element={<Charts />} />
         <Route exact path="/howto" element={<HowTo />} />
-        <Route exact path="/savedcards" element={<SavedCards />} />
-        <Route exact path="/login" element={<Login />} />
-        <Route exact path="/signup" element={<Signup />} />
+        <Route
+          exact
+          path="/savedcards"
+          element={user ? <SavedCards /> : <Navigate to="/login" />}
+        />
+        <Route
+          exact
+          path="/login"
+          element={!user ? <Login /> : <Navigate to="/savedcards" />}
+        />
+        <Route
+          exact
+          path="/signup"
+          element={!user ? <Signup /> : <Navigate to="/" />}
+        />
       </Routes>
     </div>
   );

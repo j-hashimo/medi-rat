@@ -1,7 +1,15 @@
 import React from "react";
+import { useAuthContext } from "./hooks/useAuthContext";
+import { useState } from "react";
 
 function ChartsOnClickCard({ card }) {
+  const { user } = useAuthContext();
+  const [error, setError] = useState("");
   const saveCard = async (card) => {
+    if (!user) {
+      setError("You must be logged in to save a card");
+      return;
+    }
     try {
       const cardData = {
         link: card.link,
@@ -14,6 +22,7 @@ function ChartsOnClickCard({ card }) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
         },
         body: JSON.stringify(cardData), // don't wrap cardData in curly braces, because otherwise it will be an object that doesn't register the cardData values (we obviously want the cardData values to be registered)
       });

@@ -1,24 +1,39 @@
 import { useEffect, useState, useContext } from "react";
 import { CardsContext } from "../context/UserToolsContext";
+import { useAuthContext } from "../hooks/useAuthContext";
+
 const SavedCards = () => {
+  const { user } = useAuthContext();
   const [savedCards, setSavedCards] = useState([]);
   const { state, dispatch } = useContext(CardsContext);
   useEffect(() => {
     const fetchSavedCards = async () => {
       try {
-        const response = await fetch("/api/usertools");
+        const response = await fetch("/api/usertools", {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        });
         const data = await response.json();
         setSavedCards(data);
       } catch (err) {
         console.error(err);
       }
     };
-    fetchSavedCards();
-  }, []);
+    if (user) {
+      fetchSavedCards();
+    }
+  }, [user]);
 
   const deleteCard = async (card) => {
+    if (!user) {
+      return;
+    }
     const response = await fetch("/api/usertools/" + card._id, {
       method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
     });
     const data = await response.json();
     if (response.ok) {
